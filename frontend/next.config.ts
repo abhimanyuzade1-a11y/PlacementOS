@@ -4,9 +4,9 @@ const nextConfig: NextConfig = {
   async rewrites() {
     return [
       {
-        source: "/backend/:path*",
+        source: "/api/backend/:path*",
         destination:
-          "/backend/:path*",
+          "/api/backend/:path*",
       },
     ];
   },

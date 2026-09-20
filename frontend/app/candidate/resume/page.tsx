@@ -62,7 +62,7 @@ export default function CandidateResumePage() {
       formData.append("file", file);
 
       const extractionResponse = await fetch(
-        "/backend/extract-resume",
+        "/api/backend/extract-resume",
         {
           method: "POST",
           body: formData,

@@ -224,7 +224,7 @@ function AIScreenPage() {
 
     try {
       const response = await fetch(
-        "/backend/ai-screen",
+        "/api/backend/ai-screen",
         {
           method: "POST",
           headers: {
@@ -277,7 +277,7 @@ function AIScreenPage() {
 
     try {
       const response = await fetch(
-        "/backend/generate-interview",
+        "/api/backend/generate-interview",
         {
           method: "POST",
           headers: {
