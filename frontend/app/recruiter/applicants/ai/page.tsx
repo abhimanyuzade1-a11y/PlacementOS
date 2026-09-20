@@ -277,7 +277,7 @@ function AIScreenPage() {
 
     try {
       const response = await fetch(
-        "/api/backend/generate-interview",
+        "http://127.0.0.1:8000/generate-interview",
         {
           method: "POST",
           headers: {
@@ -1231,6 +1231,7 @@ export default function AIScreenPageWrapper() {
     </Suspense>
   );
 }
+
 
 
 
