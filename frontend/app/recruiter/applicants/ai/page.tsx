@@ -224,7 +224,7 @@ function AIScreenPage() {
 
     try {
       const response = await fetch(
-        "https://placementos-api-mgb.onrender.com/ai-screen",
+        "/backend/ai-screen",
         {
           method: "POST",
           headers: {
@@ -277,7 +277,7 @@ function AIScreenPage() {
 
     try {
       const response = await fetch(
-        "https://placementos-api-mgb.onrender.com/generate-interview",
+        "/backend/generate-interview",
         {
           method: "POST",
           headers: {
@@ -1231,3 +1231,5 @@ export default function AIScreenPageWrapper() {
     </Suspense>
   );
 }
+
+
