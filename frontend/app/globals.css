@@ -1,0 +1,1006 @@
+@import "tailwindcss";
+
+/* ============================================================
+   BASE
+============================================================ */
+
+:root {
+  --background: #020617;
+  --foreground: #f8fafc;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  background:
+    radial-gradient(
+      circle at 20% 10%,
+      rgba(99, 102, 241, 0.12),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at 80% 20%,
+      rgba(6, 182, 212, 0.09),
+      transparent 35%
+    ),
+    #020617;
+  color: #f8fafc;
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+}
+
+/* ============================================================
+   PORTAL ROOT
+============================================================ */
+
+.portal-app {
+  position: relative;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background:
+    radial-gradient(
+      circle at 50% -10%,
+      rgba(99, 102, 241, 0.12),
+      transparent 35%
+    ),
+    #020617;
+}
+
+/* ============================================================
+   BACKGROUND
+============================================================ */
+
+.portal-background {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.portal-orb {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(100px);
+  opacity: 0.28;
+  animation: orbFloat 12s ease-in-out infinite;
+}
+
+.orb-one {
+  width: 500px;
+  height: 500px;
+  left: -180px;
+  top: -180px;
+  background: rgba(99, 102, 241, 0.35);
+}
+
+.orb-two {
+  width: 450px;
+  height: 450px;
+  right: -160px;
+  top: 80px;
+  background: rgba(6, 182, 212, 0.25);
+  animation-delay: -4s;
+}
+
+.orb-three {
+  width: 550px;
+  height: 550px;
+  left: 35%;
+  bottom: -300px;
+  background: rgba(139, 92, 246, 0.22);
+  animation-delay: -7s;
+}
+
+.portal-grid {
+  position: absolute;
+  inset: 0;
+  opacity: 0.045;
+
+  background-image:
+    linear-gradient(
+      rgba(255, 255, 255, 0.7) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.7) 1px,
+      transparent 1px
+    );
+
+  background-size: 55px 55px;
+
+  mask-image: linear-gradient(
+    to bottom,
+    black,
+    transparent 90%
+  );
+}
+
+.portal-stars {
+  position: absolute;
+  inset: 0;
+}
+
+.portal-star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.6);
+  box-shadow:
+    0 0 8px rgba(255, 255, 255, 0.6);
+  animation: starPulse 4s ease-in-out infinite;
+}
+
+/* ============================================================
+   SIDEBAR
+============================================================ */
+
+.portal-sidebar {
+  position: fixed;
+  z-index: 50;
+  left: 18px;
+  top: 18px;
+  bottom: 18px;
+  width: 235px;
+
+  display: flex;
+  flex-direction: column;
+
+  padding: 22px 16px;
+
+  border: 1px solid rgba(148, 163, 184, 0.12);
+  border-radius: 26px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(15, 23, 42, 0.88),
+      rgba(2, 6, 23, 0.82)
+    );
+
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.35),
+    inset 0 1px rgba(255, 255, 255, 0.05);
+
+  overflow: hidden;
+}
+
+.portal-sidebar::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      120deg,
+      rgba(99, 102, 241, 0.08),
+      transparent 40%
+    );
+
+  pointer-events: none;
+}
+
+/* ============================================================
+   BRAND
+============================================================ */
+
+.portal-brand {
+  position: relative;
+  z-index: 1;
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: 4px 6px 22px;
+}
+
+.brand-mark {
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 13px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #6366f1,
+      #8b5cf6 55%,
+      #06b6d4
+    );
+
+  color: white;
+  font-size: 20px;
+  font-weight: 900;
+
+  box-shadow:
+    0 0 30px rgba(99, 102, 241, 0.45),
+    inset 0 1px rgba(255, 255, 255, 0.4);
+
+  transform: perspective(500px) rotateX(8deg);
+}
+
+.brand-title {
+  color: white;
+  font-size: 17px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+.brand-subtitle {
+  margin-top: 2px;
+  color: #64748b;
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+}
+
+/* ============================================================
+   AI CORE
+============================================================ */
+
+.ai-core-card {
+  position: relative;
+  z-index: 1;
+
+  margin-bottom: 22px;
+  padding: 18px;
+
+  border-radius: 20px;
+
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(99, 102, 241, 0.14),
+      rgba(2, 6, 23, 0.55)
+    );
+
+  border: 1px solid rgba(99, 102, 241, 0.18);
+
+  box-shadow:
+    inset 0 1px rgba(255, 255, 255, 0.04),
+    0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.ai-core {
+  position: relative;
+
+  width: 112px;
+  height: 112px;
+
+  margin: 2px auto 15px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.core-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(99, 102, 241, 0.55);
+}
+
+.core-ring-one {
+  inset: 4px;
+  animation: coreSpin 9s linear infinite;
+  border-top-color: #22d3ee;
+  border-right-color: transparent;
+}
+
+.core-ring-two {
+  inset: 15px;
+  animation: coreSpinReverse 6s linear infinite;
+  border-left-color: #8b5cf6;
+  border-bottom-color: transparent;
+}
+
+.core-ring-three {
+  inset: 27px;
+  animation: corePulse 3s ease-in-out infinite;
+  border-color: rgba(34, 211, 238, 0.35);
+}
+
+.core-center {
+  position: relative;
+  z-index: 5;
+
+  width: 54px;
+  height: 54px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle at 35% 30%,
+      #818cf8,
+      #4f46e5 50%,
+      #312e81
+    );
+
+  color: white;
+  font-size: 13px;
+  font-weight: 900;
+
+  box-shadow:
+    0 0 35px rgba(99, 102, 241, 0.65),
+    inset 0 2px 8px rgba(255, 255, 255, 0.3);
+}
+
+.core-status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+
+  color: #a5b4fc;
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+}
+
+.core-description {
+  margin-top: 7px;
+
+  text-align: center;
+
+  color: #64748b;
+  font-size: 10px;
+}
+
+/* ============================================================
+   STATUS DOT
+============================================================ */
+
+.status-dot,
+.pulse-dot {
+  display: inline-block;
+
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+
+  background: #22c55e;
+
+  box-shadow:
+    0 0 10px rgba(34, 197, 94, 0.8);
+
+  animation: statusPulse 2s ease-in-out infinite;
+}
+
+/* ============================================================
+   NAVIGATION
+============================================================ */
+
+.portal-nav-title {
+  position: relative;
+  z-index: 1;
+
+  padding: 0 9px 9px;
+
+  color: #475569;
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: 0.18em;
+}
+
+.portal-navigation {
+  position: relative;
+  z-index: 1;
+
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.portal-nav-item {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: 11px 12px;
+
+  border: 1px solid transparent;
+  border-radius: 13px;
+
+  color: #94a3b8;
+  text-decoration: none;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  transition:
+    color 0.25s ease,
+    background 0.25s ease,
+    border 0.25s ease,
+    transform 0.25s ease;
+}
+
+.portal-nav-item span {
+  width: 20px;
+
+  display: flex;
+  justify-content: center;
+
+  color: #64748b;
+  font-size: 16px;
+}
+
+.portal-nav-item:hover {
+  color: white;
+
+  background: rgba(99, 102, 241, 0.08);
+
+  border-color: rgba(99, 102, 241, 0.12);
+
+  transform: translateX(3px);
+}
+
+.portal-nav-item:hover span {
+  color: #818cf8;
+}
+
+.portal-nav-item.active {
+  color: white;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(99, 102, 241, 0.2),
+      rgba(99, 102, 241, 0.05)
+    );
+
+  border-color: rgba(99, 102, 241, 0.22);
+
+  box-shadow:
+    inset 3px 0 #6366f1,
+    0 8px 25px rgba(99, 102, 241, 0.08);
+}
+
+.portal-nav-item.active span {
+  color: #a5b4fc;
+}
+
+/* ============================================================
+   SYSTEM CARD
+============================================================ */
+
+.system-card {
+  position: relative;
+  z-index: 1;
+
+  margin-top: auto;
+
+  padding: 13px;
+
+  border-radius: 16px;
+
+  background: rgba(2, 6, 23, 0.45);
+
+  border: 1px solid rgba(148, 163, 184, 0.08);
+}
+
+.system-header {
+  display: flex;
+  justify-content: space-between;
+
+  margin-bottom: 10px;
+
+  color: #94a3b8;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.system-live {
+  color: #22c55e;
+  font-size: 8px;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+}
+
+.system-line {
+  display: flex;
+  justify-content: space-between;
+
+  margin-top: 6px;
+
+  color: #64748b;
+  font-size: 9px;
+}
+
+.system-ok {
+  color: #22c55e;
+}
+
+/* ============================================================
+   TOPBAR
+============================================================ */
+
+.portal-topbar {
+  position: fixed;
+  z-index: 45;
+
+  top: 18px;
+  left: 271px;
+  right: 18px;
+
+  min-height: 68px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 10px 14px 10px 22px;
+
+  border: 1px solid rgba(148, 163, 184, 0.1);
+  border-radius: 20px;
+
+  background:
+    linear-gradient(
+      110deg,
+      rgba(15, 23, 42, 0.82),
+      rgba(2, 6, 23, 0.72)
+    );
+
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+
+  box-shadow:
+    0 18px 50px rgba(0, 0, 0, 0.25),
+    inset 0 1px rgba(255, 255, 255, 0.04);
+}
+
+.topbar-left {
+  min-width: 0;
+}
+
+.breadcrumb-main {
+  color: white;
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.breadcrumb-status {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+
+  margin-top: 3px;
+
+  color: #64748b;
+  font-size: 9px;
+}
+
+.topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ai-online {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+
+  padding: 8px 11px;
+
+  border: 1px solid rgba(34, 197, 94, 0.15);
+  border-radius: 10px;
+
+  background: rgba(34, 197, 94, 0.05);
+
+  color: #86efac;
+  font-size: 8px;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+}
+
+.user-card {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+
+  padding: 5px 9px 5px 5px;
+
+  border-radius: 12px;
+
+  background: rgba(15, 23, 42, 0.55);
+  border: 1px solid rgba(148, 163, 184, 0.08);
+}
+
+.user-avatar {
+  width: 34px;
+  height: 34px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 10px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #4f46e5,
+      #7c3aed
+    );
+
+  color: white;
+  font-size: 13px;
+  font-weight: 900;
+
+  box-shadow:
+    0 0 20px rgba(99, 102, 241, 0.25);
+}
+
+.user-name {
+  color: white;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.user-role {
+  margin-top: 2px;
+
+  color: #64748b;
+  font-size: 7px;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+}
+
+.signout-button {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+
+  padding: 10px 13px;
+
+  border: 1px solid rgba(239, 68, 68, 0.18);
+  border-radius: 11px;
+
+  background: rgba(239, 68, 68, 0.06);
+
+  color: #fca5a5;
+
+  font-size: 10px;
+  font-weight: 800;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    border 0.2s ease;
+}
+
+.signout-button:hover {
+  transform: translateY(-2px);
+
+  background: rgba(239, 68, 68, 0.13);
+
+  border-color: rgba(239, 68, 68, 0.3);
+}
+
+/* ============================================================
+   CONTENT AREA
+============================================================ */
+
+.portal-content {
+  position: relative;
+  z-index: 2;
+
+  min-height: 100vh;
+
+  padding:
+    108px
+    38px
+    50px
+    292px;
+}
+
+.portal-content main {
+  background: transparent !important;
+}
+
+/* Remove old dashboard nav if a page already has one.
+   The global navigation replaces it. */
+
+.portal-content main > nav {
+  display: none !important;
+}
+
+/* ============================================================
+   GLOBAL GLASS CARDS
+============================================================ */
+
+.portal-content [class*="bg-slate-900"] {
+  background:
+    linear-gradient(
+      145deg,
+      rgba(15, 23, 42, 0.78),
+      rgba(2, 6, 23, 0.66)
+    ) !important;
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.2),
+    inset 0 1px rgba(255, 255, 255, 0.035);
+}
+
+.portal-content [class*="bg-slate-800"] {
+  background:
+    rgba(15, 23, 42, 0.58) !important;
+
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+}
+
+.portal-content [class*="border-slate-800"],
+.portal-content [class*="border-slate-700"] {
+  border-color: rgba(148, 163, 184, 0.13) !important;
+}
+
+.portal-content [class*="rounded-2xl"][class*="border"] {
+  box-shadow:
+    0 20px 55px rgba(0, 0, 0, 0.16),
+    inset 0 1px rgba(255, 255, 255, 0.035);
+}
+
+/* ============================================================
+   FORM ELEMENTS
+============================================================ */
+
+.portal-content input,
+.portal-content textarea,
+.portal-content select {
+  background:
+    rgba(2, 6, 23, 0.68) !important;
+
+  border-color:
+    rgba(148, 163, 184, 0.16) !important;
+
+  color: white !important;
+
+  transition:
+    border 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.portal-content input:focus,
+.portal-content textarea:focus,
+.portal-content select:focus {
+  outline: none !important;
+
+  border-color:
+    rgba(99, 102, 241, 0.65) !important;
+
+  box-shadow:
+    0 0 0 3px rgba(99, 102, 241, 0.08),
+    0 0 25px rgba(99, 102, 241, 0.08);
+}
+
+/* ============================================================
+   BUTTON ANIMATIONS
+============================================================ */
+
+.portal-content button {
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border 0.2s ease,
+    background 0.2s ease;
+}
+
+.portal-content button:hover:not(:disabled) {
+  transform: translateY(-2px);
+}
+
+.portal-content button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.portal-content button:disabled {
+  cursor: not-allowed;
+}
+
+/* ============================================================
+   SCROLLBAR
+============================================================ */
+
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: #020617;
+}
+
+::-webkit-scrollbar-thumb {
+  background:
+    linear-gradient(
+      #4f46e5,
+      #06b6d4
+    );
+
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background:
+    linear-gradient(
+      #6366f1,
+      #22d3ee
+    );
+}
+
+/* ============================================================
+   ANIMATIONS
+============================================================ */
+
+@keyframes orbFloat {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate3d(35px, -25px, 0) scale(1.08);
+  }
+}
+
+@keyframes starPulse {
+  0%,
+  100% {
+    opacity: 0.15;
+    transform: scale(0.8);
+  }
+
+  50% {
+    opacity: 0.9;
+    transform: scale(1.4);
+  }
+}
+
+@keyframes coreSpin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes coreSpinReverse {
+  from {
+    transform: rotate(360deg);
+  }
+
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes corePulse {
+  0%,
+  100% {
+    transform: scale(0.92);
+    opacity: 0.5;
+  }
+
+  50% {
+    transform: scale(1.08);
+    opacity: 1;
+  }
+}
+
+@keyframes statusPulse {
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: scale(0.85);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+}
+
+/* ============================================================
+   MOBILE
+============================================================ */
+
+@media (max-width: 900px) {
+  .portal-sidebar {
+    display: none;
+  }
+
+  .portal-topbar {
+    left: 14px;
+    right: 14px;
+    top: 14px;
+  }
+
+  .portal-content {
+    padding:
+      100px
+      18px
+      35px;
+  }
+
+  .ai-online {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .portal-topbar {
+    min-height: 60px;
+    padding: 8px 9px;
+  }
+
+  .breadcrumb-main {
+    font-size: 12px;
+  }
+
+  .breadcrumb-status {
+    display: none;
+  }
+
+  .user-info {
+    display: none;
+  }
+
+  .user-card {
+    padding: 4px;
+    background: transparent;
+    border: none;
+  }
+
+  .signout-button {
+    padding: 8px 9px;
+    font-size: 9px;
+  }
+
+  .portal-content {
+    padding:
+      88px
+      12px
+      25px;
+  }
+} 
