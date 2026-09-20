@@ -62,7 +62,7 @@ export default function CandidateResumePage() {
       formData.append("file", file);
 
       const extractionResponse = await fetch(
-        "http://127.0.0.1:8000/extract-resume",
+        "https://placementos-api-mgb.onrender.com/extract-resume",
         {
           method: "POST",
           body: formData,

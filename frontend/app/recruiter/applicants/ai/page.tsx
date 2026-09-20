@@ -224,7 +224,7 @@ export default function AIScreenPage() {
 
     try {
       const response = await fetch(
-        "http://127.0.0.1:8000/ai-screen",
+        "https://placementos-api-mgb.onrender.com/ai-screen",
         {
           method: "POST",
           headers: {
@@ -277,7 +277,7 @@ export default function AIScreenPage() {
 
     try {
       const response = await fetch(
-        "http://127.0.0.1:8000/generate-interview",
+        "https://placementos-api-mgb.onrender.com/generate-interview",
         {
           method: "POST",
           headers: {
