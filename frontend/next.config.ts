@@ -5,7 +5,7 @@ const nextConfig: NextConfig = {
     return [
       {
         source: "/api/backend/:path*",
-        destination: "https://placementos-api-mgb.onrender.com/:path*",
+        destination: "https://placementos-api-mgbi.onrender.com/:path*",
       },
     ];
   },
