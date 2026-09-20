@@ -224,7 +224,7 @@ function AIScreenPage() {
 
     try {
       const response = await fetch(
-        "/api/backend/ai-screen",
+        "http://127.0.0.1:8000/ai-screen",
         {
           method: "POST",
           headers: {
@@ -1231,5 +1231,6 @@ export default function AIScreenPageWrapper() {
     </Suspense>
   );
 }
+
 
 
